@@ -1,0 +1,6 @@
+For my solo project I will be making a application using Python and Django on the back-end and HTML CSS and Bootstrap for the front-end.
+The idea for this project is a user logs in or signs up for a new account using first and last name, a username, email, and password 
+once granted access the user can post story ideas or character outlines or really anything the main idea is for people to post creative ideas and then other users can view these ideas and submit a request to add on to them so they are now collaborating on this story or idea its just a fun way for people to try to get creative the original poster of the story has to approve the changes before they are added to the story (this would be an added feature that I'm gonna go for I dont know how to do it but I want it to notify the users account when a request has been submitted once viewing it they can decide to either approve or deny it which would just delete it)
+everyone will have theyre own profile page another additional I want to add is a profile picture each user can have users will also be allowed to delete or update theyre own posts 
+I will also add a like feature to storys so users can like storys
+finally the last additional feature I want to add is on the main page/dashboard you can view storys sorted by most likes or most recent
