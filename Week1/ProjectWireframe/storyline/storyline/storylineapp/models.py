@@ -1,7 +1,6 @@
 from django.db import models
-from django.db import models
+from djchoices import ChoiceItem, DjangoChoices
 import bcrypt 
-from django.contrib.auth.validators import UnicodeUsernameValidator
 import re 
 #checking if email is proper email format 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -67,3 +66,26 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+
+
+
+class StoryManager(models.Manager):
+    def story_validator(self, postData):
+        errors = {}
+        if len(postData['title']) < 2:
+            errors['title'] = "Title must be 2 or more characters"
+        
+
+class Story(models.Model):
+    ACTION = 'action'
+    COMEDY = 'comedy'
+    CHOICES = (
+        (ACTION, 'action'),
+        (COMEDY, 'comedy')
+    )
+    title = models.CharField(max_length=255)
+    genre = models.CharField(max_length=255, choices=CHOICES, default=None)
+    content = models.TextField(max_length=100000)
+    writer_of_the_story = models.ForeignKey(User, related_name="author_of_the_story", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
