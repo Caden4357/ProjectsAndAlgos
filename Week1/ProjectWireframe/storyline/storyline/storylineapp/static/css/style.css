@@ -7,16 +7,38 @@ html, body {
 	height: 110vh; */
 }
 .login{
-    background: linear-gradient(to right, #1f1515, #3a135a, #031a29, #0d324d);
+    background: linear-gradient(to right, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120));
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 110vh;
+    /* background-color: rgb(202, 141, 141); */
+}
+.login-form{
+    border: linear-gradient(to right, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120));
+    border-radius: 20px;
+    height: 600px;
+    /* background-color: rgb(209, 71, 71); */
+    background: linear-gradient(to left, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120));
+    background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+    box-shadow: 0 3rem 4rem rgba(119, 4, 4, 0.287);
+    margin: 40px;
+    padding: 50px;
+}
+h1{
+    font-family: 'Birthstone', cursive;
+    font-family: 'Ephesis', cursive;
+    font-family: 'Lobster', cursive;
 }
 .dashboard{
     /* background: linear-gradient(to right, #0da080, #b4a0c5); */
-    background-color: #f3f2ef;
+    /* background-color: #f3f2ef;
+	background-size: 400% 400%; */
+	/* animation: gradient 15s ease infinite; */
+    /* background-color: rgb(202, 141, 141); */
+    /* background: linear-gradient(to right, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120));
 	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+	animation: gradient 15s ease infinite; */
 }
 .logo{
     width: 60px;
@@ -66,22 +88,27 @@ li{
     font-size: 26px;
     color: grey;
     margin-right: 20px;
+    font-family: 'Birthstone', cursive;
+    font-family: 'Ephesis', cursive;
+    font-family: 'Lobster', cursive;
 }
 .header-login{
     margin-top: 40px;
     text-align: center;
-    color: aliceblue;
+    font-size: 60px;
+    color: black;
+    font-family: 'Birthstone', cursive;
+    font-family: 'Ephesis', cursive;
+    font-family: 'Lobster', cursive;
 }
-
-/* .container{
-    background: linear-gradient(to right, rgba(73, 18, 223, 0.294), rgba(161, 122, 124, 0.835));
-    height: 100vh;
-} */
 a{
     text-decoration: none;
     margin-top: 15px;
     font-size: 25px;
     color: black;
+    font-family: 'Birthstone', cursive;
+    font-family: 'Ephesis', cursive;
+    font-family: 'Lobster', cursive;
 }
 a:hover{
     color: rgb(138, 110, 110);
@@ -96,23 +123,47 @@ button{
     width: 200px;
     border-radius: 4px;
     padding: 10px;
-    box-shadow: 12px 12px 3px;
+    box-shadow: 0 3rem 4rem rgba(255, 255, 255, 0.287);
     margin: 7px 3px;
+}
+.button{
+    display: block;
+    align-items: center;
+    border: 1px solid black;
+    font-weight:700;
+    font-size: 24px;
+    width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 3rem 4rem rgba(255, 255, 255, 0.287);
+    /* margin: 7px 3px; */
+    padding: 10px;
+    margin-top: 40px
 }
 label{
     display: block;
+    font-family: 'Birthstone', cursive;
+    font-family: 'Ephesis', cursive;
+    font-family: 'Lobster', cursive;
+    /* text-align: center; */
     width: 200px;
     font-size: 32px;
     color: rgb(0, 0, 0);
 }
-input, select{
-    width: 150px;
+input, select, input[type="text"], input[type="password"], textarea{
+    /* align-items: center;
+    width: 650px;
+    height: 40px; */
+    font-family: 'Birthstone', cursive;
+    font-family: 'Ephesis', cursive;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
     margin: 10px auto;
     background-color: white;
     border: 1px solid black;
-    border-radius: 40px;
-    box-shadow: 0 3rem 4rem rgba(255, 255, 255, 0.287);
+    border-radius: 20px;
+    box-shadow: 0 3rem 4rem rgba(8, 7, 7, 0.287);
 }
+
 .listItem{
     text-align: center;
     border-bottom: 4px double lightgrey;
@@ -126,33 +177,43 @@ input, select{
 .story-blocks{
     padding: 20px;
     width: 800px;
-    height: 30vh;
     text-align: center;
     border: 2px solid rgb(0, 0, 0);
     border-radius: 10px;
-    background-color: rgb(7, 81, 124);
-    z-index: +1;
+    background-color: rgb(136, 149, 156);
+    font-family: 'Ephesis', cursive;
+    font-size: 36px;
 }
-.create-story{
+.create-story-button{
     border: 1px solid black;
     font-weight:700;
     font-size: 24px;
     width: 200px;
     border-radius: 4px;
     padding: 10px;
-    box-shadow: 12px 12px 3px;
+    box-shadow: 0 3rem 4rem rgba(10, 9, 9, 0.287);
     margin: 7px 3px;
 }
-.create-story-form{
+.create-story{
     display: flex;
     justify-content: center;
+    margin-top: 80px;
+
 }
+.create-story-form{
+    border: linear-gradient(to right, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120));
+    border-radius: 20px;
+    /* background-color: rgb(209, 71, 71); */
+    background: linear-gradient(to left, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120));
+    background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+    box-shadow: 0 3rem 4rem rgba(119, 4, 4, 0.287);
+    margin: 40px;
+    padding: 50px;
+}
+
 .story-header{
     padding-top: 30px;
     text-align: center;
     color: rgb(0, 0, 0);
-}
-.title{
-    text-align: center;
-    margin-left: 60px
 }
