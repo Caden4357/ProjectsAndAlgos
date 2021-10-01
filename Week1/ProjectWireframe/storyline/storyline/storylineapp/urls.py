@@ -6,6 +6,7 @@ urlpatterns = [
     path('registerPage', views.registerPage),
     path('register', views.register),
     path('login', views.login),
-    path('success', views.registered),
-    path('logout', views.logout)
+    path('dashboard', views.dashboard),
+    path('logout', views.logout),
+    path('create/story', views.new_story)
 ]

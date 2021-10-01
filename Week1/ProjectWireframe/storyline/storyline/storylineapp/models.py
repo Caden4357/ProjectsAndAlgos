@@ -74,7 +74,9 @@ class StoryManager(models.Manager):
         errors = {}
         if len(postData['title']) < 2:
             errors['title'] = "Title must be 2 or more characters"
-        
+        if len(postData['content']) < 10:
+            errors['content'] = "Story must be 10 or more characters"
+        return errors
 
 class Story(models.Model):
     ACTION = 'action'
@@ -87,5 +89,7 @@ class Story(models.Model):
     genre = models.CharField(max_length=255, choices=CHOICES, default=None)
     content = models.TextField(max_length=100000)
     writer_of_the_story = models.ForeignKey(User, related_name="author_of_the_story", on_delete=models.CASCADE)
+    users_who_like = models.ManyToManyField(User, related_name='liked_stories')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = StoryManager()

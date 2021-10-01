@@ -31,3 +31,40 @@ def popFront(arr):
     removedItem = arr.pop(0)
     return removedItem
 print(popFront([1,2,3,5,4]))
+
+#Given an array, index, and additional value, insert the value into array at given index. Do this without using built-in array methods. You can think of pushFront(arr,val) as equivalent to insertAt(arr,0,val).
+[4,3,2,5,6], 2, 8
+[4,3,2,5,6,0]
+[4,3,8,2,5,6]
+
+def insertAt(arr, idx, val):
+    if(idx > len(arr)-1):
+        return arr
+    elif(len(arr) < 2):
+        return arr
+    else:
+        arr = arr + [0]
+        i = 0
+        while i < len(arr):
+            try:
+                if(i == idx):
+                    temp1 = arr[i]
+                    arr[i] = val
+                    temp2 = arr[i+1]
+                    i+=1
+                    while i < len(arr):
+                        arr[i] = temp1
+                        temp1 = temp2
+                        temp2 = arr[i+1]
+                        i+=1
+                    return arr
+                else:
+                    arr[i] = arr[i]
+                    i+=1
+            except IndexError:
+                return arr
+print(insertAt([5,4,6,4,8], 0, 2))
+print(insertAt([33,4,-334,0,2,99,100,34,3,22,90,0,.99,.0934], 10, .8))
+print(insertAt([], 0, 2))
+print(insertAt([2], 10, 266))
+print(insertAt([2,6,5,55,499,22,3,-99], 10, 266))

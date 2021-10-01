@@ -11,27 +11,29 @@
 </head>
 <body>
     <div class="container">
-        <div class="d-flex justify-content-center">
-            <div class="row1 col-6">
-                <h1 class="header-login">Login</h1>
-                <ul>  
-                    {% if messages %}  
-                        {% for message in messages %}
-                            <li class="text-danger">{{message}}</li>
-                    {% endfor %}
-                    {% endif %}
-                </ul>
-                <form action="/login" method="POST">
-                    {%csrf_token%}
-                    <label class="form-label" for="email_address">Email Adress:</label>
-                    <input class="form-control" type="text" name="email_address">
-                    <label class="form-label" for="password">Password:</label>
-                    <input class="form-control" type="password" name="password">
-                    <a href="/registerPage">Not a member? Sign up here!</a>
-                    <button type="submit" value="Create Account">Log in</button>
-                </form>
+        <section class="login">
+            <div class="d-flex justify-content-center">
+                <div class="row1 col-6">
+                    <h1 class="header-login">Login</h1>
+                    <ul>  
+                        {% if messages %}  
+                            {% for message in messages %}
+                                <li class="text-danger">{{message}}</li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <form action="/login" method="POST">
+                        {%csrf_token%}
+                        <label class="form-label" for="email_address">Email Adress:</label>
+                        <input class="form-control" type="text" name="email_address">
+                        <label class="form-label" for="password">Password:</label>
+                        <input class="form-control" type="password" name="password">
+                        <a href="/registerPage">Not a member? Sign up here!</a>
+                        <button type="submit" value="Create Account">Log in</button>
+                    </form>
+                </div>
             </div>
-        </div>
+        </section>
     </div>
 </body>
 </html>
