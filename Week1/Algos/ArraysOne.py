@@ -68,3 +68,16 @@ print(insertAt([33,4,-334,0,2,99,100,34,3,22,90,0,.99,.0934], 10, .8))
 print(insertAt([], 0, 2))
 print(insertAt([2], 10, 266))
 print(insertAt([2,6,5,55,499,22,3,-99], 10, 266))
+
+# Given a numerical array, reverse the order of values, in-place. The reversed array should have the same length, with existing elements moved to other indices so that order of elements is reversed. Working 'in-place' means that you cannot use a second 
+#array – move values within the array that you are given. As always, do not use built-in array functions such as splice().
+
+def reverseWithoutBuiltIns(arr):
+    length = len(arr)
+    for i in range(int(length/2)):
+        n = arr[i]
+        arr[i] = arr[length - i - 1]
+        arr[length - i - 1] = n
+    return arr
+print(reverseWithoutBuiltIns([5,4,3,2,1,0,9,-88,22,-0.4]))
+

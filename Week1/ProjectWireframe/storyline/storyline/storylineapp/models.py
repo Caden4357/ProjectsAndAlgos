@@ -2,6 +2,9 @@ from django.db import models
 from djchoices import ChoiceItem, DjangoChoices
 import bcrypt 
 import re 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from sorl.thumbnail import ImageField
 #checking if email is proper email format 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
@@ -68,6 +71,21 @@ class User(models.Model):
     objects = UserManager()
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="profile"
+    )
+    image = ImageField(upload_to='profiles')
+    def __str__(self):
+        return self.user.username
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    # Create a new profile object when a new user is created 
+    if created:
+        Profile.objects.create(user=instance)
 
 class StoryManager(models.Manager):
     def story_validator(self, postData):
@@ -81,9 +99,19 @@ class StoryManager(models.Manager):
 class Story(models.Model):
     ACTION = 'action'
     COMEDY = 'comedy'
+    SCIFI = 'sci-fi/fantasy'
+    THRILLER = "thriller"
+    HORROR = 'horror'
+    DRAMA = 'drama'
+    ROMANCE = 'romance'
     CHOICES = (
         (ACTION, 'action'),
-        (COMEDY, 'comedy')
+        (COMEDY, 'comedy'),
+        (SCIFI, "sci-fi/fantasy"),
+        (THRILLER, 'mystery/thriller'),
+        (HORROR, "horror"),
+        (DRAMA, 'drama'),
+        (ROMANCE, 'romance')
     )
     title = models.CharField(max_length=255)
     genre = models.CharField(max_length=255, choices=CHOICES, default=None)
