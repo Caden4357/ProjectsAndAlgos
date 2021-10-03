@@ -114,6 +114,9 @@ li{
     font-family: 'Lobster', cursive;
 }
 a{
+    display: block;
+    text-align: center;
+    /* width: 725px; */
     text-decoration: none;
     margin-top: 15px;
     font-size: 25px;
@@ -153,18 +156,18 @@ button{
 }
 label{
     display: block;
+    text-align: center;
+    width: 725px;
     font-family: 'Birthstone', cursive;
     font-family: 'Ephesis', cursive;
     font-family: 'Lobster', cursive;
-    /* text-align: center; */
-    width: 200px;
     font-size: 32px;
     color: rgb(0, 0, 0);
 }
 input, select, input[type="text"], input[type="password"], textarea{
-    /* align-items: center;
-    width: 650px;
-    height: 40px; */
+    align-items: center;
+    width: 400px;
+    /* height: 40px; */
     font-family: 'Birthstone', cursive;
     font-family: 'Ephesis', cursive;
     font-family: 'Lobster', cursive;

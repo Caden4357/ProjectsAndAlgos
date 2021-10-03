@@ -70,14 +70,14 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
-
+DEFAULT = 'images/typewriter.jpg'
 class Profile(models.Model):
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
         related_name="profile"
     )
-    image = ImageField(upload_to='profiles')
+    image = ImageField(upload_to='profiles', default=DEFAULT)
     def __str__(self):
         return self.user.username
 
