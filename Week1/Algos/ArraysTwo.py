@@ -27,6 +27,8 @@ print(reverseWithoutBuiltIns([5,4,3,2,1,0,9,-88,22,-0.4]))
 
 
 
+
+
 # Alan is good at breaking secret codes. One method is to eliminate values that lie outside of a specific known range. Given arr and values min and max, retain only the array values between min and max. Work in-place: return the array you are given, with values in original order. No built-in array functions.
 
 def filterRange(arr, min, max):
@@ -44,4 +46,4 @@ print(filterRange([5,4,2,6,18,901,900,899.99], 1, 900))
 def concat(arr1, arr2):
     arr3 = arr1 + arr2
     return arr3
-print(concat(['a', 'b'], [1,2]))
+print(concat(['a', 'b'], [1]))

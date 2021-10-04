@@ -1,4 +1,7 @@
 # Set myNumber to 42. Set myName to your name. Now swap myNumber into myName & vice versa.
+from re import I
+
+
 def swap():
     myNumber = 42
     myName = "Caden"
@@ -63,3 +66,32 @@ def multiplesOfFive():
             print(i)
     return count
 print(multiplesOfFive())
+
+# Print multiples of 6 up to 60,000, using a WHILE.
+def multiplesOfSix():
+    i = 6
+    while(i <= 60000):
+        if(i % 6 == 0):
+            print(i)
+            i+=1
+        else:
+            i+=1
+multiplesOfSix()
+
+# Print integers 1 to 100. If divisible by 5, print "Coding" instead. If by 10, also print " Dojo".
+def countingDojo():
+    for i in range(101):
+        if(i % 10 == 0):
+            print("Dojo")
+        elif(i % 5 ==0):
+            print("Coding")
+        else:
+            print(i)
+countingDojo()
+    
+# Your function will be given an input parameter incoming. Please console.log this value.
+def printValue(incoming):
+    print(incoming)
+printValue("this is a string")
+printValue(26)
+printValue([6,5,9,8,6,666])

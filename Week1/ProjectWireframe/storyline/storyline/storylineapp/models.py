@@ -70,7 +70,7 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
-DEFAULT = 'images/typewriter.jpg'
+DEFAULT = 'images/blank-profile.jpg'
 class Profile(models.Model):
     user = models.OneToOneField(
         User,

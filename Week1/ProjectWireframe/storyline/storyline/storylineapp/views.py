@@ -36,6 +36,18 @@ def logout(request):
     request.session.clear()
     return redirect('/')
 
+def profilePage(request, id):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to log in")
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    usersPage =  User.objects.get(id=id)
+    context = {
+        'usersPage': User.objects.get(id=id),
+        'user': user,
+        'stories': Story.objects.filter(writer_of_the_story=usersPage)
+    }
+    return render(request, 'profile.html', context)
 
 def dashboard(request):
     if 'user_id' not in request.session:
