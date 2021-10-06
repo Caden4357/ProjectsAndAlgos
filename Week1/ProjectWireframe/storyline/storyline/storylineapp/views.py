@@ -1,3 +1,4 @@
+from django.contrib.messages.api import error
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import *
@@ -77,3 +78,28 @@ def new_story(request):
             writer_of_the_story = user
         )
     return redirect('/dashboard')
+
+def edit(request, id):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to log in")
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context ={
+        'story': Story.objects.get(id=id),
+        'user': user
+    }
+    return render(request, 'edit.html', context)
+
+def update(request, id):
+    if request.method=="POST":
+        errors = Story.objects.story_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect(f"/edit/{id}")
+        story_to_update = Story.objects.get(id=id)
+        story_to_update.title = request.POST['title'],
+        story_to_update.content = request.POST['content'],
+        story_to_update.genre = request.POST['genre']
+        story_to_update.save()
+        return redirect('/dashboard')

@@ -9,5 +9,7 @@ urlpatterns = [
     path('dashboard', views.dashboard),
     path('logout', views.logout),
     path('profile/<int:id>', views.profilePage),
-    path('create/story', views.new_story)
+    path('create/story', views.new_story),
+    path('story/edit/<int:id>', views.edit),
+    path('story/update/<int:id>', views.update),
 ]
