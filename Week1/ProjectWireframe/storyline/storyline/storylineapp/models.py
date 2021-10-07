@@ -70,6 +70,10 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
+# class ProfileManager(models.Manager):
+#     def profile_manager(self, postData):
+#         errors = {}
+#         return errors
 DEFAULT = 'images/blank-profile.jpg'
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -78,6 +82,7 @@ class Profile(models.Model):
         related_name="profile"
     )
     image = ImageField(upload_to='profiles', default=DEFAULT)
+    # objects = ProfileManager()
     def __str__(self):
         return self.user.username
 

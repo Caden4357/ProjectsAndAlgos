@@ -8,18 +8,14 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">   
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Ephesis&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 <script src="{% static 'js/java.js' %}"></script>
 {%load thumbnail%}
     <title>Welcome</title>
 </head>
 <body>
-    <div class="container">
-            <header>
+        <header>
                 <h1 class="storyline-header">
                     <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
                     </a>
@@ -73,14 +69,12 @@
             {%for story in stories reversed%}
             <div class="story">
                 <div class="story-blocks">
-                    <h1>{{story.title}}</h1>
-                    <p>{{story.content}}</p>
-                    <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a >
+                    <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
+                    <p>Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
                 </div>
             </div>
             <hr>
             {%endfor%}
         </section>
-    </div>
 </body>
 </html>

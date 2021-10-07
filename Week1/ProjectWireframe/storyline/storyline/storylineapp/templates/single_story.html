@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+    <script src="{% static 'js/java.js' %}"></script>
+    {%load thumbnail%}  
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1 class="storyline-header">
+            <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
+            </a>
+            Storyline</h1>
+            <h1>Welcome {{user.username}}</h1>
+        <ul>
+            <li><a href="/dashboard">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </header>
+    <section class="dashboard">
+        <div class="story">
+            <div class="story-blocks">
+                <h1>{{story.title}}</h1>
+                <p>Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
+                <textarea rows="8" cols="50">
+                    {{story.content}}
+                </textarea>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

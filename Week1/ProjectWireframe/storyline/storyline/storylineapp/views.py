@@ -1,7 +1,9 @@
+import os
 from django.contrib.messages.api import error
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import *
+
 
 def index(request):
     return render(request, 'login.html')
@@ -79,6 +81,18 @@ def new_story(request):
         )
     return redirect('/dashboard')
 
+def read_one_story(request, id):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to log in")
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    story = Story.objects.get(id=id)
+    context = {
+        'story': story,
+        'user': user
+    }
+    return render(request, "single_story.html", context)
+
 def edit(request, id):
     if 'user_id' not in request.session:
         messages.error(request, "You need to log in")
@@ -88,7 +102,7 @@ def edit(request, id):
         'story': Story.objects.get(id=id),
         'user': user
     }
-    return render(request, 'edit.html', context)
+    return render(request, 'edit_story.html', context)
 
 def update(request, id):
     if request.method=="POST":
@@ -98,8 +112,42 @@ def update(request, id):
                 messages.error(request, value)
             return redirect(f"/edit/{id}")
         story_to_update = Story.objects.get(id=id)
-        story_to_update.title = request.POST['title'],
-        story_to_update.content = request.POST['content'],
+        story_to_update.title = request.POST['title']
+        story_to_update.content = request.POST['content']
         story_to_update.genre = request.POST['genre']
         story_to_update.save()
+        return redirect('/dashboard')
+
+def destroy(request, id):
+    to_delete = Story.objects.get(id=id)
+    to_delete.delete()
+    return redirect('/dashboard')
+
+def edit_profile(request, id):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to log in")
+        return redirect('/')
+    user = User.objects.get(id=id)
+    context ={
+        'user': user
+    }
+    return render(request, 'edit_profile.html', context)
+
+def update_profile(request, id):
+    if request.method=="POST":
+        # errors = User.objects.basic_validator(request.POST)
+        # if len(errors) > 0:
+        #     for key, value in errors.items():
+        #         messages.error(request, value)
+        #     return redirect(f"/dashboard")
+        user_to_update = User.objects.get(id=id)
+        user_to_update.first_name = request.POST['first_name']
+        user_to_update.last_name = request.POST['last_name']
+        user_to_update.username = request.POST['username']
+        if len(request.FILES) != 0:
+            if len(user_to_update.profile.image) > 0:
+                os.remove(user_to_update.profile.image.path)
+            user_to_update.profile.image = request.FILES['image']
+        print(user_to_update.profile.image)
+        user_to_update.save()
         return redirect('/dashboard')

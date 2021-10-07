@@ -9,16 +9,12 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">   
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Ephesis&family=Lobster&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
 <script src="{% static 'js/java.js' %}"></script>
 {%load thumbnail%}
 </head>
 <body>
-    <div class="container">
         <header>
             <h1 class="storyline-header">
                 <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
@@ -32,12 +28,16 @@
         </header>
         <section class="dashboard">
             <div class="profile">
-                {% thumbnail usersPage.profile.image "200x200" crop="center" as im %}
-                    <img class="profile-pic" src="{{ im.url }}" width="200px" height="200px" style="border-radius: 20px;">
-                {% endthumbnail %}
-                <h1 class="profile-username">{{usersPage.username}}</h1>
+                <div>
+                    {% thumbnail usersPage.profile.image "200x200" crop="center" as im %}
+                        <img class="profile-pic" src="{{ im.url }}" width="200px" height="200px" style="border-radius: 20px;">
+                    {% endthumbnail %}
+                    <h1 class="profile-username">{{usersPage.username}}</h1>
+                    {% if usersPage.id == user.id %}
+                    <a href="/profile/edit/{{user.id}}">Edit Profile</a>
+                    {%endif%}
+                </div>
             </div>
-            <hr>
             {% if usersPage.id == user.id %}
             <div class="create-story">
                 <div class="create-story-form">
@@ -48,7 +48,7 @@
                         {% endfor %}
                         {% endif %}
                     </ul>
-                    <form action="create/story" method="POST">
+                    <form action="/profile/create/story" method="POST">
                         <h1 class="text-center">Post A New Story</h1>
                         {%csrf_token%}
                         <label class="title" for="title">Title</label>
@@ -76,21 +76,22 @@
                     {%endif%}
                 </div>
             </div>
-            <div class="container">
-            <h1 class="story-header">Stories</h1>
+            <h1 class="story-header">Your Stories</h1>
             {%for story in stories reversed%}
             <div class="story">
                 <div class="story-blocks">
-                    <h1>{{story.title}}</h1>
-                    <p>{{story.content}}</p>
+                    <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
+                    {% if usersPage.id == user.id %}
+                    <form action="/story/delete/{{story.id}}" method="POST">
+                        {%csrf_token%}
+                        <a href="/story/delete/{{story.id}}">Delete</a>
+                    </form>
                     <a href="/story/edit/{{story.id}}">Edit</a>
+                    {%endif%}
                 </div>
             </div>
-            <hr>
             {%endfor%}
         </div>
     </section>
-
-    </div>
 </body>
 </html>

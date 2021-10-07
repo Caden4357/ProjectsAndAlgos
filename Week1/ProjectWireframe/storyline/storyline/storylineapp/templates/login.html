@@ -9,38 +9,42 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Ephesis&family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <title>Login Or Register</title>
 </head>
 <body>
-    <!-- <div class="container"> -->
-        <section class="login">
-            <div class="d-flex justify-content-center">
-                <div class="row1 col-6">
-                    
-                    <ul>  
-                        {% if messages %}  
-                            {% for message in messages %}
-                                <li class="text-danger">{{message}}</li>
-                        {% endfor %}
-                        {% endif %}
-                    </ul>
-                    <h1 class="header-login">Welcome Back To Storyline</h1>
-                    <h1 class="header-login">Login</h1>
-                    <div class="login-form">
-                        <form action="/login" method="POST">
-                            {%csrf_token%}
-                            <label class="form-label" for="email_address">Email Address:</label>
-                            <input class="form-control" type="text" name="email_address">
-                            <label class="form-label" for="password">Password:</label>
-                            <input class="form-control" type="password" name="password">
-                            <a href="/registerPage">Not a member? Sign up here!</a>
-                            <input class="button" type="submit" value="Sign In">
-                        </form>
+    <div>
+        <div class="flex">
+            <div className="flex_column1">
+                <!-- <video className="flex_column1_video" muted loop="true" autoPlay="true" >
+                    <source src="{% static 'images/background-video.mp4' %}" type="video/mp4"/>
+                </video> -->
+                <div class="flex_column1_content">
+                    <div class="flex_column1_content-text"> 
+                        <ul>  
+                            {% if messages %}  
+                                {% for message in messages %}
+                                    <li class="text-danger">{{message}}</li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <h1 class="header-login">Welcome Back To Storyline</h1>
+                        <h1 class="header-login">Login</h1>
+                        <div class="login-form">
+                            <form action="/login" method="POST">
+                                {%csrf_token%}
+                                <label class="form-label" for="email_address">Email Address:</label>
+                                <input class="form-control" type="text" name="email_address">
+                                <label class="form-label" for="password">Password:</label>
+                                <input class="form-control" type="password" name="password">
+                                <a href="/registerPage">Not a member? Sign up here!</a>
+                                <input class="button" type="submit" value="Sign In">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    <!-- </div> -->
+        </div>
+    </div>
 </body>
 </html>
