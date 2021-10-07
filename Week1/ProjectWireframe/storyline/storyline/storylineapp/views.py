@@ -6,11 +6,14 @@ from .models import *
 
 
 def index(request):
+    # Load login page first thing that comes up 
     return render(request, 'login.html')
 
+# link from not a user sign up here brings you to the register page 
 def registerPage(request):
     return render(request, 'register_page.html')
 
+# register new user with validations once successful you will be automatically logged in 
 def register(request):
     if request.method == "GET":
         return redirect('/registerPage')
@@ -24,7 +27,7 @@ def register(request):
         request.session['user_id'] = user.id
         return redirect('/dashboard')
 
-
+# login in existing user 
 def login(request):
     if request.method == "GET":
         return redirect('/')
@@ -35,10 +38,25 @@ def login(request):
     request.session['user_id'] = user.id
     return redirect('/dashboard')
 
+
 def logout(request):
     request.session.clear()
     return redirect('/')
 
+
+# first page user see's on successful log in 
+def dashboard(request):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to log in")
+        return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
+    context = {
+        'user': user,
+        'stories': Story.objects.all()
+    }
+    return render(request, 'dashboard.html', context)
+
+# view single users profile page front end validations to give logged in user more freedom over their own account 
 def profilePage(request, id):
     if 'user_id' not in request.session:
         messages.error(request, "You need to log in")
@@ -52,17 +70,7 @@ def profilePage(request, id):
     }
     return render(request, 'profile.html', context)
 
-def dashboard(request):
-    if 'user_id' not in request.session:
-        messages.error(request, "You need to log in")
-        return redirect('/')
-    user = User.objects.get(id=request.session['user_id'])
-    context = {
-        'user': user,
-        'stories': Story.objects.all()
-    }
-    return render(request, 'dashboard.html', context)
-
+# create a new story path in urls.py allows this view to work wether user is on dashboard or profile page 
 def new_story(request):
     if 'user_id' not in request.session:
         return redirect('/')
@@ -81,6 +89,7 @@ def new_story(request):
         )
     return redirect('/dashboard')
 
+# you have to click on the title of a story to be able to read it clicking that link will bring you to this page 
 def read_one_story(request, id):
     if 'user_id' not in request.session:
         messages.error(request, "You need to log in")
@@ -93,6 +102,7 @@ def read_one_story(request, id):
     }
     return render(request, "single_story.html", context)
 
+# edit story 
 def edit(request, id):
     if 'user_id' not in request.session:
         messages.error(request, "You need to log in")
@@ -104,6 +114,7 @@ def edit(request, id):
     }
     return render(request, 'edit_story.html', context)
 
+# update story 
 def update(request, id):
     if request.method=="POST":
         errors = Story.objects.story_validator(request.POST)
@@ -118,10 +129,12 @@ def update(request, id):
         story_to_update.save()
         return redirect('/dashboard')
 
+# delete story 
 def destroy(request, id):
     to_delete = Story.objects.get(id=id)
     to_delete.delete()
     return redirect('/dashboard')
+
 
 def edit_profile(request, id):
     if 'user_id' not in request.session:

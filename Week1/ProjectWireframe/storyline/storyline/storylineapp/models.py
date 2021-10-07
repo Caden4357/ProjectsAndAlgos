@@ -81,11 +81,13 @@ class Profile(models.Model):
         on_delete=models.CASCADE,
         related_name="profile"
     )
+    # using sorl.thumbnail with pillow to upload profile pics the the default is givin automatically when a user/profile are made 
     image = ImageField(upload_to='profiles', default=DEFAULT)
     # objects = ProfileManager()
     def __str__(self):
         return self.user.username
 
+# the @receiver works like a satelite looking for signals of a user object being made everytime a user object is made it will automatically create a profile under that users username
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     # Create a new profile object when a new user is created 
