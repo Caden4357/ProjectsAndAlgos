@@ -40,6 +40,8 @@ class UserManager(models.Manager):
             errors['pw'] = "Passwords do not match"
         return errors
 
+
+
     def register(self, postData):
         #encrypting password with salt 
         pw = bcrypt.hashpw(postData['password'].encode(), bcrypt.gensalt()).decode()
