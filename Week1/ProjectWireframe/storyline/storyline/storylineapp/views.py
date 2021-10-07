@@ -140,14 +140,21 @@ def update_profile(request, id):
         #     for key, value in errors.items():
         #         messages.error(request, value)
         #     return redirect(f"/dashboard")
-        user_to_update = User.objects.get(id=id)
+        user = User.objects.get(id=id)
+        user_to_update = user
+        profile_to_update = Profile.objects.get(user=user)
+
+
+    # validation to ensure that if the user doesnt change profile picture then it stay what it is originally without throwing multikeydict error 
+        if len(request.FILES) != 0:
+            if len(profile_to_update.image) > 0:
+                profile_to_update.image = profile_to_update.image.path
+
+            profile_to_update.image = request.FILES['image']
+        print(profile_to_update.image)
         user_to_update.first_name = request.POST['first_name']
         user_to_update.last_name = request.POST['last_name']
         user_to_update.username = request.POST['username']
-        if len(request.FILES) != 0:
-            if len(user_to_update.profile.image) > 0:
-                os.remove(user_to_update.profile.image.path)
-            user_to_update.profile.image = request.FILES['image']
-        print(user_to_update.profile.image)
+        profile_to_update.save()
         user_to_update.save()
-        return redirect('/dashboard')
+        return redirect(f'/profile/{id}')
