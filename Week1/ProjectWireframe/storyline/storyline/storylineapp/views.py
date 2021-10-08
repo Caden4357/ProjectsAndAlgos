@@ -98,6 +98,7 @@ def read_one_story(request, id):
     story = Story.objects.get(id=id)
     context = {
         'story': story,
+        'story_additions': StoryAddition.objects.get(story_trying_to_be_added_to=story),
         'user': user
     }
     return render(request, "single_story.html", context)

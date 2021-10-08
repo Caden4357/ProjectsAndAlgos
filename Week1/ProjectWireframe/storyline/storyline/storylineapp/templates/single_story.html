@@ -33,6 +33,9 @@
                 <p>Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
                 <textarea rows="8" cols="50">
                     {{story.content}}
+                    {%if story_additions.been_accepted == False%}
+                        {{story_additions.added_content}}
+                    {%endif%}
                 </textarea>
             </div>
         </div>

@@ -1,13 +1,17 @@
+from os import error
 from django.db import models
+from django.db.models.fields import related
 from djchoices import ChoiceItem, DjangoChoices
 import bcrypt 
 import re 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from sorl.thumbnail import ImageField
+
 #checking if email is proper email format 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
+# USER VALIDATIONS FOR LOGIN AND FIRST TIME REGISTER NOT FOR UPDATING PROFILE OR USER INFORMATION
 class UserManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
@@ -62,6 +66,23 @@ class UserManager(models.Manager):
             else:
                 return False
 
+
+# update the user information
+    def update_user(self, postData):
+        errors = {}
+        if len(postData['first_name']) < 2:
+            errors["first_name"] = "First Name should be at least 2 characters"
+
+        if len(postData['last_name']) < 2:
+            errors["last_name"] = "Last Name should be at least 2 characters"
+
+        if len(postData['username']) < 4:
+            errors["username"] = "User Name should be at least 4 characters"
+        username_check = User.objects.filter(username= postData['username'])
+        if username_check:
+            errors['duplicate'] = "Username already exists"
+
+# USER MODEL
 class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -72,8 +93,12 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
+
+
+
+
 # class ProfileManager(models.Manager):
-#     def profile_manager(self, postData):
+#     def update_profile_manager(self, postData):
 #         errors = {}
 #         return errors
 DEFAULT = 'images/blank-profile.jpg'
@@ -96,6 +121,13 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
 
+
+
+
+
+
+
+# STORY MODEL
 class StoryManager(models.Manager):
     def story_validator(self, postData):
         errors = {}
@@ -130,3 +162,12 @@ class Story(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = StoryManager()
+
+class StoryAddition(models.Model):
+    added_content = models.TextField(max_length=100000)
+    user_adding_content = models.ManyToManyField(User, related_name="users_who_added_to_story")
+    story_trying_to_be_added_to = models.ForeignKey(Story, related_name="original_story", on_delete=models.CASCADE)
+    been_accepted = models.BooleanField(False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
