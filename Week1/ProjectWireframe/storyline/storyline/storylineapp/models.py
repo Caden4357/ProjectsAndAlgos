@@ -1,6 +1,8 @@
 from os import error
 from django.db import models
+from django.db.models.deletion import CASCADE
 from django.db.models.fields import related
+from django.http import request
 from djchoices import ChoiceItem, DjangoChoices
 import bcrypt 
 import re 
@@ -68,7 +70,7 @@ class UserManager(models.Manager):
 
 
 # update the user information
-    def update_user(self, postData):
+    def update_user(self, postData, id):
         errors = {}
         if len(postData['first_name']) < 2:
             errors["first_name"] = "First Name should be at least 2 characters"
@@ -80,7 +82,9 @@ class UserManager(models.Manager):
             errors["username"] = "User Name should be at least 4 characters"
         username_check = User.objects.filter(username= postData['username'])
         if username_check:
-            errors['duplicate'] = "Username already exists"
+            if id != username_check[0].id:
+                errors['duplicate'] = "Username already exists"
+        return errors
 
 # USER MODEL
 class User(models.Model):
@@ -156,18 +160,27 @@ class Story(models.Model):
     )
     title = models.CharField(max_length=255)
     genre = models.CharField(max_length=255, choices=CHOICES, default=None)
-    content = models.TextField(max_length=100000)
+    content = models.TextField(max_length=10000)
     writer_of_the_story = models.ForeignKey(User, related_name="author_of_the_story", on_delete=models.CASCADE)
     users_who_like = models.ManyToManyField(User, related_name='liked_stories')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = StoryManager()
 
-class StoryAddition(models.Model):
-    added_content = models.TextField(max_length=100000)
-    user_adding_content = models.ManyToManyField(User, related_name="users_who_added_to_story")
-    story_trying_to_be_added_to = models.ForeignKey(Story, related_name="original_story", on_delete=models.CASCADE)
-    been_accepted = models.BooleanField(False)
+
+# COMMENT MODEL users can comment on stories 
+
+class CommentManager(models.Manager):
+    def comment_validator(self, postData):
+        errors = {}
+        if len(postData['post']) < 2:
+            errors['post'] = "Comment must be 2 or more characters"
+        return errors
+class Comment(models.Model):
+    post = models.CharField(max_length=255)
+    posted_by = models.ForeignKey(User, related_name="user_posting_comment", on_delete=models.CASCADE)
+    story_posted_to = models.ForeignKey(Story, related_name="comments_on_story", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    objects = CommentManager()
 

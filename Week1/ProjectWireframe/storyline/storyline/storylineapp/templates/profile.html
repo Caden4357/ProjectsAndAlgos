@@ -76,7 +76,11 @@
                     {%endif%}
                 </div>
             </div>
-            <h1 class="story-header">Your Stories</h1>
+            {% if usersPage.id == user.id %}
+                <h1 class="story-header">{{usersPage.username}}'s Stories</h1>
+            {% else %}
+                <h1 class="story-header">{{usersPage.username}}'s Stories</h1>
+            {%endif%}
             {%for story in stories reversed%}
             <div class="story">
                 <div class="story-blocks">

@@ -31,12 +31,25 @@
             <div class="story-blocks">
                 <h1>{{story.title}}</h1>
                 <p>Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
-                <textarea rows="8" cols="50">
-                    {{story.content}}
-                    {%if story_additions.been_accepted == False%}
-                        {{story_additions.added_content}}
-                    {%endif%}
-                </textarea>
+                <textarea rows="8" cols="50">{{story.content}}</textarea>
+                <div>
+                    {% if messages %}  
+                    {% for message in messages %}
+                        <li class="text-danger">{{message}}</li>
+                    {% endfor %}
+                    {% endif %}
+                    <form action="/post/comment/{{story.id}}" method="POST">
+                        {%csrf_token%}
+                        <label class="post" for="post">Comment:</label>
+                        <input class="form-control" type="text" name="post">
+                        <input class="create-story-button" type="submit" value="Post">
+                    </form>
+                </div>
+                {%for comments in story.comments_on_story.all reversed%}
+                    <p>Posted By: {{comments.posted_by.username}}</p>
+                    <p>Comment: {{comments.post}}</p>
+                    <hr>
+                {%endfor%}
             </div>
         </div>
     </section>

@@ -98,7 +98,6 @@ def read_one_story(request, id):
     story = Story.objects.get(id=id)
     context = {
         'story': story,
-        'story_additions': StoryAddition.objects.get(story_trying_to_be_added_to=story),
         'user': user
     }
     return render(request, "single_story.html", context)
@@ -149,11 +148,11 @@ def edit_profile(request, id):
 
 def update_profile(request, id):
     if request.method=="POST":
-        # errors = User.objects.basic_validator(request.POST)
-        # if len(errors) > 0:
-        #     for key, value in errors.items():
-        #         messages.error(request, value)
-        #     return redirect(f"/dashboard")
+        errors = User.objects.update_user(request.POST, request.session['user_id'])
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect(f"/dashboard")
         user = User.objects.get(id=id)
         user_to_update = user
         profile_to_update = Profile.objects.get(user=user)
@@ -172,3 +171,21 @@ def update_profile(request, id):
         profile_to_update.save()
         user_to_update.save()
         return redirect(f'/profile/{id}')
+
+def post_comment(request, id):
+    if 'user_id' not in request.session:
+        return redirect('/')
+    errors = Comment.objects.comment_validator(request.POST)
+    if errors:
+            for key,value in errors.items():
+                messages.error(request, value)
+            return redirect(f'/story/{id}')
+    else:
+        user = User.objects.get(id=request.session['user_id'])
+        story = Story.objects.get(id=id)
+        Comment.objects.create(
+            post = request.POST['post'],
+            posted_by = user,
+            story_posted_to = story
+        )
+    return redirect(f'/story/{id}')

@@ -22,4 +22,7 @@ urlpatterns = [
     path('story/update/<int:id>', views.update),
     path('story/delete/<int:id>', views.destroy),
     path('story/<int:id>', views.read_one_story),
+
+    # Comment CRUD Commands
+    path('post/comment/<int:id>', views.post_comment)
 ]
