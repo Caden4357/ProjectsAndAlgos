@@ -20,10 +20,17 @@
                     <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
                     </a>
                     Storyline</h1>
-                    <a href="/profile/{{user.id}}"><h1>Welcome {{user.username}}</h1></a>
+                    <a href="/profile/{{user.id}}">
+                        <h1 style="margin-left: 160px;">Welcome {{user.username}}
+                        {% thumbnail user.profile.image "100x100" crop="center" as im %}
+                            <img class="profile-pic" src="{{ im.url }}" width="100px" height="100px" style="border-radius: 20px;">
+                        {% endthumbnail %}
+                        </h1> 
+                    </a>                  
                 <ul>
                     <li><a href="/dashboard">Home</a></li>
                     <li><a href="/logout">Logout</a></li>
+                    <li><a href="/favorite/stories/{{user.id}}">Favorite Stories</a></li>
                 </ul>
             </header>
             <section class="dashboard">

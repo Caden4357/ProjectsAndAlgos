@@ -9,6 +9,11 @@ import re
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from sorl.thumbnail import ImageField
+from django.utils import timezone
+import datetime
+
+now = timezone.now()
+
 
 #checking if email is proper email format 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -180,7 +185,7 @@ class Comment(models.Model):
     post = models.CharField(max_length=255)
     posted_by = models.ForeignKey(User, related_name="user_posting_comment", on_delete=models.CASCADE)
     story_posted_to = models.ForeignKey(Story, related_name="comments_on_story", on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=now)
     updated_at = models.DateTimeField(auto_now=True)
     objects = CommentManager()
 

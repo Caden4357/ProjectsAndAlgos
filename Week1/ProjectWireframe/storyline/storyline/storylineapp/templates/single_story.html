@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
     <script src="{% static 'js/java.js' %}"></script>
     {%load thumbnail%}  
+    {% load tz %}
     <title>Document</title>
 </head>
 <body>
@@ -20,10 +21,11 @@
             <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
             </a>
             Storyline</h1>
-            <h1>Welcome {{user.username}}</h1>
+            <a href="/profile/{{user.id}}"><h1 style="margin-left: 160px;">Welcome {{user.username}}</h1></a>
         <ul>
             <li><a href="/dashboard">Home</a></li>
             <li><a href="/logout">Logout</a></li>
+            <li><a href="/favorite/stories/{{user.id}}">Favorite Stories</a></li>
         </ul>
     </header>
     <section class="dashboard">
@@ -32,6 +34,7 @@
                 <h1>{{story.title}}</h1>
                 <p>Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
                 <textarea rows="8" cols="50">{{story.content}}</textarea>
+                    <a class="create-story-button" href="/favorite/{{story.id}}">Add To Your Favorites</a>
                 <div>
                     {% if messages %}  
                     {% for message in messages %}
@@ -46,9 +49,17 @@
                     </form>
                 </div>
                 {%for comments in story.comments_on_story.all reversed%}
-                    <p>Posted By: {{comments.posted_by.username}}</p>
-                    <p>Comment: {{comments.post}}</p>
-                    <hr>
+                <div class="comments">
+                    <div>
+                        <p>{{comments.post}}</p>
+                        <p class="smaller">Posted By: {{comments.posted_by.username}}</p>
+                        <p class="smaller">Posted: {{comments.created_at}}</p>
+                        {% if comments.posted_by.id == user.id %}
+                            <a href="/delete/comment/{{comments.id}}/story/{{story.id}}">Delete</a>
+                        {%endif%}
+                        <hr>
+                    </div>
+                </div>
                 {%endfor%}
             </div>
         </div>

@@ -24,5 +24,11 @@ urlpatterns = [
     path('story/<int:id>', views.read_one_story),
 
     # Comment CRUD Commands
-    path('post/comment/<int:id>', views.post_comment)
+    path('post/comment/<int:id>', views.post_comment),
+    path('delete/comment/<int:id>/story/<int:story_id>', views.destroy_comment),
+
+    # Favorite and Unfavorite stories
+    path('favorite/<int:id>', views.favorite_story),
+    # path('unfavorite/<int:id>', views.unfavorite_story)
+    path('favorite/stories/<int:id>', views.users_favorite_stories)
 ]

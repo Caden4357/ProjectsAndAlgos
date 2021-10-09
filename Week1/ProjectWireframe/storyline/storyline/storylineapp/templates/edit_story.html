@@ -20,10 +20,11 @@
             <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
             </a>
             Storyline</h1>
-            <h1>{{user.username}}</h1>
+            <a href="/profile/{{user.id}}"><h1 style="margin-left: 160px;">Welcome {{user.username}}</h1></a>
         <ul>
             <li><a href="/dashboard">Home</a></li>
             <li><a href="/logout">Logout</a></li>
+            <li><a href="/favorite/stories/{{user.id}}">Favorite Stories</a></li>
         </ul>
     </header>
     <div class="dashboard">
@@ -50,9 +51,7 @@
                         <textarea class="form-control" 
                         type="text" 
                         name="content" 
-                        rows="4" cols="25">
-                            {{story.content}}
-                        </textarea>
+                        rows="4" cols="25">{{story.content}}</textarea>
                         <label>Genre:</label>
                         <select class="form-control custom-select mb-4" name="genre">
                             <option selected>{{story.genre}}</option>

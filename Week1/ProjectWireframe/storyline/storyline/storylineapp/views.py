@@ -63,10 +63,12 @@ def profilePage(request, id):
         return redirect('/')
     user = User.objects.get(id=request.session['user_id'])
     usersPage =  User.objects.get(id=id)
+    all_stories = Story.objects.all()
     context = {
         'usersPage': User.objects.get(id=id),
         'user': user,
-        'stories': Story.objects.filter(writer_of_the_story=usersPage)
+        'stories': Story.objects.filter(writer_of_the_story=usersPage),
+        'all_stories': all_stories
     }
     return render(request, 'profile.html', context)
 
@@ -157,7 +159,6 @@ def update_profile(request, id):
         user_to_update = user
         profile_to_update = Profile.objects.get(user=user)
 
-
     # validation to ensure that if the user doesnt change profile picture then it stay what it is originally without throwing multikeydict error 
         if len(request.FILES) != 0:
             if len(profile_to_update.image) > 0:
@@ -189,3 +190,38 @@ def post_comment(request, id):
             story_posted_to = story
         )
     return redirect(f'/story/{id}')
+
+def destroy_comment(request, id, story_id):
+    to_delete = Comment.objects.get(id=id)
+    to_delete.delete()
+    return redirect(f'/story/{story_id}')
+
+def favorite_story(request, id):
+    story = Story.objects.get(id=id)
+    user = User.objects.get(id=request.session['user_id'])
+    story.users_who_like.add(user)
+    story.save()
+    return redirect(f'/story/{id}')
+
+
+# Unfavorite
+
+
+
+def users_favorite_stories(request, id):
+    if 'user_id' not in request.session:
+        messages.error(request, "You need to log in")
+        return redirect('/')
+    user = User.objects.get(id=id)
+    context = {
+        'user': user
+    }
+    return render(request, 'favorite_stories.html', context)
+
+
+
+
+
+
+
+

@@ -21,10 +21,11 @@
             <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
             </a>
             Storyline</h1>
-            <h1>{{user.username}}</h1>
+            <a href="/profile/{{user.id}}"><h1 style="margin-left: 160px;">{{user.username}}'s Profile</h1></a>
         <ul>
             <li><a href="/dashboard">Home</a></li>
             <li><a href="/logout">Logout</a></li>
+            <li><a href="/favorite/stories/{{user.id}}">Favorite Stories</a></li>
         </ul>
     </header>
     <div class="dashboard">

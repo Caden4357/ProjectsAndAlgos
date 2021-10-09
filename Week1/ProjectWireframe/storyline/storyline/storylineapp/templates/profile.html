@@ -15,17 +15,23 @@
 {%load thumbnail%}
 </head>
 <body>
-        <header>
-            <h1 class="storyline-header">
-                <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
-                </a>
-                Storyline</h1>
-                <h1>{{usersPage.username}}</h1>
-            <ul>
-                <li><a href="/dashboard">Home</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </header>
+    <header>
+        <h1 class="storyline-header">
+            <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
+            </a>
+            Storyline</h1>
+            <a href="/profile/{{usersPage.id}}"><h1 style="margin-left: 160px;">{{usersPage.username}}'s Profile
+            {% thumbnail user.profile.image "100x100" crop="center" as im %}
+                <img class="profile-pic" src="{{ im.url }}" width="100px" height="100px" style="border-radius: 20px;">
+            {% endthumbnail %}
+            </h1>
+            </a>
+        <ul>
+            <li><a href="/dashboard">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/favorite/stories/{{usersPage.id}}">Favorite Stories</a></li>
+        </ul>
+    </header>
         <section class="dashboard">
             <div class="profile">
                 <div>
@@ -76,11 +82,15 @@
                     {%endif%}
                 </div>
             </div>
-            {% if usersPage.id == user.id %}
-                <h1 class="story-header">{{usersPage.username}}'s Stories</h1>
-            {% else %}
-                <h1 class="story-header">{{usersPage.username}}'s Stories</h1>
-            {%endif%}
+            <!-- <h1 class="text-center">{{usersPage.username}}'s Favorite Stories</h1>
+            {%for stories in usersPage.liked_stories.all%}
+            <div class="favorite-stories">
+                <div>
+                    <h2>{{stories.title}}</h2>
+                </div>
+            </div>
+            {%endfor%} -->
+            <h1 class="story-header">{{usersPage.username}}'s Stories</h1>
             {%for story in stories reversed%}
             <div class="story">
                 <div class="story-blocks">
