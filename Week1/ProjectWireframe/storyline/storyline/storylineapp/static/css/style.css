@@ -58,7 +58,7 @@ html, body{
         font-weight: bolder;
 }
 .reg-form{
-    border: linear-gradient(-45deg, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120));
+    /* border: linear-gradient(-45deg, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120)); */
     border-radius: 20px;
     height: 1000px;
     /* background-color: rgb(209, 71, 71); */
@@ -76,11 +76,23 @@ h2{
     font-family: 'Architects Daughter', cursive;
 }
 .dashboard{
-    background-color: #f3f2ef;
+    /* background: linear-gradient(-45deg, rgba(131,58,180,0.3085609243697479) 0%, rgba(159,65,65,0.6446953781512605) 50%, rgba(69,122,252,0.227328431372549) 100%);    background-color: #f3f2ef; */
     /* background: rgb(131,58,180);
-    background: linear-gradient(90deg, rgba(131,58,180,0.3085609243697479) 0%, rgba(159,65,65,0.6446953781512605) 50%, rgba(69,122,252,0.227328431372549) 100%); */
+   */
+    /* background: rgb(174,238,208);
+    background: radial-gradient(circle, rgba(174,238,208,1) 0%, rgba(148,158,233,1) 100%); */
+    /* background-color: #504e48; */
+    /* background: linear-gradient(to left, #b3a98d, rgb(112, 146, 146)); */
+    background-color: #f3f2ef;    
+    /* background: linear-gradient(to left, rgba(34,193,195,1) 0%, rgba(253,187,45,0.36458333333333337) 100%);
+    background-size: 400% 400%;
+	animation: gradient 15s ease infinite; */
+    /* background-color: #977307; */
     width: 100%;  
     min-height: 100vh;
+/* 
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite; */
 
 }
 .logo{
@@ -132,7 +144,7 @@ li{
     font-family: 'Architects Daughter', cursive;
 }
 a{
-    display: block;
+    /* display: block; */
     text-align: center;
     color: black;
     text-decoration: none;
@@ -211,6 +223,9 @@ textarea{
     justify-content: center;
 }
 .story-blocks{
+    background-color: #f3f2ef;
+    /* background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,0.36458333333333337) 100%); */
+    /* background: radial-gradient(0deg, rgb(112, 82, 12) 0%, rgba(148,158,233,1) 100%); */
     padding: 20px;
     width: 50%;
     text-align: center;
@@ -239,6 +254,7 @@ textarea{
 .create-story-form{
     /* border: linear-gradient(to right, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120)); */
     border-radius: 20px;
+    background-color: #f3f2ef;    
     /* background-color: rgb(209, 71, 71); */
     /* background: linear-gradient(to left, rgb(46, 30, 30), rgb(39, 65, 65),rgb(97, 60, 60), rgb(54, 75, 43)); */
     /* background: rgb(131,58,180);
@@ -254,17 +270,28 @@ textarea{
     color: rgb(0, 0, 0);
 }
 .profile{
-    width: 100%;
+    width: 50%;
     border-radius: 20px;
     display: flex;
     justify-content: center;
+    margin-left: 25%;
+}
+.profile-div{
+    border: 2px solid black;
+    border-radius: 30px;
+    background-color: #f3f2ef;
+    box-shadow: 0 1rem 2rem rgba(10, 9, 9, 0.287);
+    padding: 20px;
+    margin: 20px;
 }
 
 .profile-pic{
     margin-top: 20px;
+    
 }
+
 .comments{
-    border: 2px solid #23a6d5;
+    border: 2px solid black;
     margin: 20px;
     display: flex;
     justify-content: center;
@@ -272,9 +299,8 @@ textarea{
 .smaller{
     font-size: 22px;
 }
-.favorite-stories{
+.fav-stories{
     margin: 20px;
     display: flex;
     justify-content: center;
-
 }

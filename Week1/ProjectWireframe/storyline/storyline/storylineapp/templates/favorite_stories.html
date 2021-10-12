@@ -20,28 +20,30 @@
             <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
             </a>
             Storyline</h1>
-            <a href="/profile/{{user.id}}"><h1 style="margin-left: 160px;">{{user.username}}'s Favorite Stories</h1></a>
+            <a href="/profile/{{user.id}}"><h1 style="margin-left: 160px;">{{user.username}}</h1>
+            </a>
         <ul>
             <li><a href="/dashboard">Home</a></li>
             <li><a href="/logout">Logout</a></li>
-            <li><a href="/favorite/stories/{{user.id}}">Favorite Stories</a></li>
+            <li><a href="/favorite/stories/{{usersPage.id}}">Favorite Stories</a></li>
         </ul>
     </header>
-    <div class="dashbooard">
-        <h1 class="text-center">Stories {{user.username}} Favorited</h1>
+    <div class="dashboard">
         <div class="profile">
-            {% thumbnail user.profile.image "200x200" crop="center" as im %}
-            <img class="profile-pic" src="{{ im.url }}" width="200px"   height="200px" style="border-radius: 20px;">
-            {% endthumbnail %}
+            <div class="profile-div">
+                <h1 class="text-center">Stories {{user.username}} Favorited</h1>
+                {% thumbnail user.profile.image "200x200" crop="center" as im %}
+                <img class="profile-pic" src="{{ im.url }}" width="200px"   height="200px" style="border-radius: 200px; margin-left: 30%;">
+                {% endthumbnail %}
+            </div>
         </div>
-        <hr>
         {%for story in user.liked_stories.all%}
-        <div class="favorite-stories">
+        <div class="fav-stories">
             <div>
                 <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
             </div>
         </div>
         {%endfor%}
-    </div>
+        </div>
 </body>
 </html>

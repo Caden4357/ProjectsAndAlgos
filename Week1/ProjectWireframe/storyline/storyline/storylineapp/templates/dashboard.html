@@ -22,9 +22,6 @@
                     Storyline</h1>
                     <a href="/profile/{{user.id}}">
                         <h1 style="margin-left: 160px;">Welcome {{user.username}}
-                        {% thumbnail user.profile.image "100x100" crop="center" as im %}
-                            <img class="profile-pic" src="{{ im.url }}" width="100px" height="100px" style="border-radius: 20px;">
-                        {% endthumbnail %}
                         </h1> 
                     </a>                  
                 <ul>
@@ -76,6 +73,7 @@
                 <div class="story-blocks">
                     <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
                     <p>Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
+                    <p class="smaller">Posted: {{story.created_at}}</p>
                 </div>
             </div>
             <hr>

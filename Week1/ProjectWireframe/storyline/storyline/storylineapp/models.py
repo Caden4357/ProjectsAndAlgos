@@ -89,7 +89,24 @@ class UserManager(models.Manager):
         if username_check:
             if id != username_check[0].id:
                 errors['duplicate'] = "Username already exists"
+        
+        email_check = User.objects.filter(email_address= postData['email_address'])
+        if email_check:
+            if id != email_check[0].id:
+                errors['duplicate'] = "Email already exists"
         return errors
+
+
+    # def change_password(self, id, password):
+    #     users = User.objects.filter(id=id)
+    #     if users:
+    #         user=users[0]
+    #         if bcrypt.checkpw(password.encode(), user.password.encode()):
+
+    #             return True
+    #         else:
+    #             return False
+        
 
 # USER MODEL
 class User(models.Model):
@@ -104,12 +121,6 @@ class User(models.Model):
 
 
 
-
-
-# class ProfileManager(models.Manager):
-#     def update_profile_manager(self, postData):
-#         errors = {}
-#         return errors
 DEFAULT = 'images/blank-profile.jpg'
 class Profile(models.Model):
     user = models.OneToOneField(
@@ -129,11 +140,6 @@ def create_user_profile(sender, instance, created, **kwargs):
     # Create a new profile object when a new user is created 
     if created:
         Profile.objects.create(user=instance)
-
-
-
-
-
 
 
 # STORY MODEL

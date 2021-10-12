@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path
 from . import views
 
@@ -29,6 +30,7 @@ urlpatterns = [
 
     # Favorite and Unfavorite stories
     path('favorite/<int:id>', views.favorite_story),
-    # path('unfavorite/<int:id>', views.unfavorite_story)
-    path('favorite/stories/<int:id>', views.users_favorite_stories)
+    path('unfavorite/<int:id>', views.unfavorite_story),
+    path('favorite/stories/<int:id>', views.users_favorite_stories),
+
 ]

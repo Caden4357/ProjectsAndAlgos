@@ -34,13 +34,20 @@
                 <h1>{{story.title}}</h1>
                 <p>Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
                 <textarea rows="8" cols="50">{{story.content}}</textarea>
-                    <a class="create-story-button" href="/favorite/{{story.id}}">Add To Your Favorites</a>
                 <div>
+                    {% if story.users_who_like.size > 1 %}
+                        <p>Likes</p>
+                    {%endif%}
                     {% if messages %}  
                     {% for message in messages %}
                         <li class="text-danger">{{message}}</li>
                     {% endfor %}
                     {% endif %}
+                    {%if story in stories_user_liked %}
+                        <a class="create-story-button" href="/unfavorite/{{story.id}}">Remove From Favorites</a>
+                    {%else%}
+                        <a class="create-story-button" href="/favorite/{{story.id}}">Add To Your Favorites</a>
+                    {%endif%}
                     <form action="/post/comment/{{story.id}}" method="POST">
                         {%csrf_token%}
                         <label class="post" for="post">Comment:</label>

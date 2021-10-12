@@ -1,6 +1,6 @@
 import os
 from django.contrib.messages.api import error
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from .models import *
 
@@ -52,6 +52,7 @@ def dashboard(request):
     user = User.objects.get(id=request.session['user_id'])
     context = {
         'user': user,
+        'all_users': User.objects.all(),
         'stories': Story.objects.all()
     }
     return render(request, 'dashboard.html', context)
@@ -100,6 +101,7 @@ def read_one_story(request, id):
     story = Story.objects.get(id=id)
     context = {
         'story': story,
+        'stories_user_liked': Story.objects.all().filter(users_who_like=user),
         'user': user
     }
     return render(request, "single_story.html", context)
@@ -154,7 +156,7 @@ def update_profile(request, id):
         if len(errors) > 0:
             for key, value in errors.items():
                 messages.error(request, value)
-            return redirect(f"/dashboard")
+            return redirect(f"/profile/edit/{id}")
         user = User.objects.get(id=id)
         user_to_update = user
         profile_to_update = Profile.objects.get(user=user)
@@ -169,6 +171,7 @@ def update_profile(request, id):
         user_to_update.first_name = request.POST['first_name']
         user_to_update.last_name = request.POST['last_name']
         user_to_update.username = request.POST['username']
+        user_to_update.email_address = request.POST['email_address']
         profile_to_update.save()
         user_to_update.save()
         return redirect(f'/profile/{id}')
@@ -206,6 +209,12 @@ def favorite_story(request, id):
 
 # Unfavorite
 
+def unfavorite_story(request, id):
+    story = Story.objects.get(id=id)
+    user = User.objects.get(id=request.session['user_id'])
+    story.users_who_like.remove(user)
+    story.save()
+    return redirect(f'/story/{id}')
 
 
 def users_favorite_stories(request, id):
@@ -217,9 +226,6 @@ def users_favorite_stories(request, id):
         'user': user
     }
     return render(request, 'favorite_stories.html', context)
-
-
-
 
 
 

@@ -20,11 +20,7 @@
             <a href="/dashboard"><img class="logo" src="{% static 'images/typewriter.jpg' %}"/>
             </a>
             Storyline</h1>
-            <a href="/profile/{{usersPage.id}}"><h1 style="margin-left: 160px;">{{usersPage.username}}'s Profile
-            {% thumbnail user.profile.image "100x100" crop="center" as im %}
-                <img class="profile-pic" src="{{ im.url }}" width="100px" height="100px" style="border-radius: 20px;">
-            {% endthumbnail %}
-            </h1>
+            <a href="/profile/{{usersPage.id}}"><h1 style="margin-left: 160px;">{{usersPage.username}}'s Profile</h1>
             </a>
         <ul>
             <li><a href="/dashboard">Home</a></li>
@@ -34,9 +30,9 @@
     </header>
         <section class="dashboard">
             <div class="profile">
-                <div>
+                <div class="profile-div">
                     {% thumbnail usersPage.profile.image "200x200" crop="center" as im %}
-                        <img class="profile-pic" src="{{ im.url }}" width="200px" height="200px" style="border-radius: 20px;">
+                        <img class="profile-pic" src="{{ im.url }}" width="200px" height="200px" style="border-radius: 200px; margin-left: 2%;">
                     {% endthumbnail %}
                     <h1 class="profile-username">{{usersPage.username}}</h1>
                     {% if usersPage.id == user.id %}
