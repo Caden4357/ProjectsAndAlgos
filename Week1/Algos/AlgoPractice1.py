@@ -95,3 +95,33 @@ def printValue(incoming):
 printValue("this is a string")
 printValue(26)
 printValue([6,5,9,8,6,666])
+
+def bigSum():
+    sum = 0
+    for i in range (1, 300000, 2):
+        sum += i
+    return sum
+print(bigSum())
+
+# Log positive numbers starting at 2016, counting down by fours (exclude 0), without a FOR loop.
+def countdownByFour():
+    num = 2016
+    while num > 0:
+        print(num)
+        num -= 4
+countdownByFour()
+
+# Based on earlier “Countdown by Fours”, given lowNum, highNum, mult, print multiples of mult from highNum down to lowNum, using a FOR. For (2,9,3), print 9 6 3 (on successive lines).
+    # lowNum=2
+    # highNum=9
+    # mult=3 
+    # Im gonna use another variable called count if lowNum is higher then mult I know to start count at 2 atleast then I will compare it to lowNum if lowNum is still higher I will repeat that process once mult is higher than lowNum I will continue multiplying it and comparing it to high num 
+def flexibleCountdown(lowNum, highNum, mult):
+    for i in range(1,highNum,1):
+        if(mult * i > highNum):
+            break
+        if (mult * i < lowNum):
+            continue
+        elif(mult * i >= lowNum):
+            print(mult * i)
+flexibleCountdown(4,10,4)

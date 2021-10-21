@@ -76,24 +76,10 @@ h2{
     font-family: 'Architects Daughter', cursive;
 }
 .dashboard{
-    /* background: linear-gradient(-45deg, rgba(131,58,180,0.3085609243697479) 0%, rgba(159,65,65,0.6446953781512605) 50%, rgba(69,122,252,0.227328431372549) 100%);    background-color: #f3f2ef; */
-    /* background: rgb(131,58,180);
-   */
-    /* background: rgb(174,238,208);
-    background: radial-gradient(circle, rgba(174,238,208,1) 0%, rgba(148,158,233,1) 100%); */
-    /* background-color: #504e48; */
-    /* background: linear-gradient(to left, #b3a98d, rgb(112, 146, 146)); */
-    background-color: #f3f2ef;    
-    /* background: linear-gradient(to left, rgba(34,193,195,1) 0%, rgba(253,187,45,0.36458333333333337) 100%);
-    background-size: 400% 400%;
-	animation: gradient 15s ease infinite; */
-    /* background-color: #977307; */
+    /* background-color: #b8ae92;     */
+    background-color: #f3f2ef;
     width: 100%;  
     min-height: 100vh;
-/* 
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite; */
-
 }
 .logo{
     width: 60px;
