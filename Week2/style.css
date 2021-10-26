@@ -1,0 +1,82 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    height: 100vh;
+}
+input{
+    display: block;
+    width: 100%;
+    font-size: 25px;
+    background-color: rgb(53, 50, 50);
+    color: aliceblue;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.one {
+    border: 2px solid black;
+    grid-column: 1/2 ;
+    grid-row: 1;
+    height: 100%;
+}
+.clown-video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.text-over-clown-video{
+    position: absolute;
+    top: 50%;
+    left: 15%;    
+    width: 20%;
+    text-align: center;
+    /* transform: translate(-50%, -50%); */
+    background-image: linear-gradient(to right, rgba(0,0,0,0.171), rgba(0,0,0,0.171));
+    box-shadow: 0 5rem 4rem rgba(0, 0, 0, 0.65);
+    background-color: rgba(0,0,0,0.322);
+    color: aliceblue;
+    font-size: 100%;
+
+}
+.two {
+    border: 2px solid black;
+    /* display: flex;
+    height: 50%;
+    justify-content: center; */
+    grid-column: 2;
+    grid-row: 1;
+    height: 100%;
+}
+.sign-in{
+    margin: auto;
+    margin-top: 20%;
+    border: 2px solid black;
+    font-size: 100%;
+    width: 50%;
+    height: 50%;
+    
+}
+.sign-in-form{
+    display: flex;
+    justify-content: center;
+}
+/* .three {
+    border: 2px solid black;
+    grid-column: 2;
+    grid-row: 2 / 4;
+}
+.four {
+    border: 2px solid black;
+    grid-column: 3;
+    grid-row: 3;
+}
+.five {
+    border: 2px solid black;
+    grid-column: 2;
+    grid-row: 4;
+}
+.six {
+    border: 2px solid black;
+    grid-column: 3;
+    grid-row: 4;
+} */
