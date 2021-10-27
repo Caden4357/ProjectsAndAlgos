@@ -124,4 +124,18 @@ def flexibleCountdown(lowNum, highNum, mult):
             continue
         elif(mult * i >= lowNum):
             print(mult * i)
-flexibleCountdown(4,10,4)
+flexibleCountdown(5,100,4)
+
+
+# This is based on “Flexible Countdown”. The parameter names are not as helpful, but the problem is essentially identical; don’t be thrown off! Given 4 parameters (param1,param2,param3,param4), print the multiples of param1, starting at param2 and extending to param3. One exception: if a multiple is equal to param4, then skip (don’t print) it. Do this using a WHILE. Given (3,5,17,9), print 6,12,15 (which are all of the multiples of 3 between 5 and 17, and excluding the value 9).
+# given 4 numbers first print the multiples of the first number starting at the second number and stoping at the third number just like above only this time compare the current multiple to the 4th number if it is the multiple is the same as the current num dont print it 
+
+def finalCountdown(lowNum, highNum, mult, xNum):
+    for i in range(1,highNum,1):
+        if(mult * i > highNum):
+            break
+        if (mult * i < lowNum):
+            continue
+        if(mult * i >= lowNum and mult * i != xNum):
+            print(mult * i)
+finalCountdown(5,17,3,9)

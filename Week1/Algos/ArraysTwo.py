@@ -38,7 +38,7 @@ def filterRange(arr, min, max):
         elif(arr[i] > max):
             arr.pop(i)
     return arr
-print(filterRange([5,4,2,6,18,901,900,899.99], 1, 900))
+print(filterRange([5,4,2,6,18,901,900,899.99], 18, 900))
 
 
 # Replicate JavaScript's concat(). Create a standalone function that accepts two arrays. Return a new array containing the first array's elements, followed by the second array's elements. Do not alter the original arrays. Ex.: arrConcat( ['a','b'], [1,2] ) should return new array ['a','b',1,2].
