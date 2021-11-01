@@ -31,6 +31,7 @@
                 </ul>
             </header>
             <section class="dashboard">
+                <h1 class="text-center">Welcome To Storyline A Place To Share Ideas And Stories</h1>
             <div class="create-story">
                 <div class="create-story-form">
                     <ul>  
@@ -67,13 +68,14 @@
                 </div>
             </div>
             <hr>
-            <h1 class="story-header">Stories</h1>
+            <h1 class="story-header">New Stories</h1>
             {%for story in stories reversed%}
             <div class="story">
                 <div class="story-blocks">
                     <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
-                    <p>Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
+                    <p class="smaller">Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
                     <p class="smaller">Posted: {{story.created_at}}</p>
+                    <p class="smaller">Genre: {{story.genre}}</p>
                 </div>
             </div>
             <hr>

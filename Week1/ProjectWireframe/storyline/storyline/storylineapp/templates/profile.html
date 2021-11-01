@@ -25,7 +25,12 @@
         <ul>
             <li><a href="/dashboard">Home</a></li>
             <li><a href="/logout">Logout</a></li>
-            <li><a href="/favorite/stories/{{usersPage.id}}">Favorite Stories</a></li>
+            {% if usersPage.id == user.id %}
+            <li><a href="/favorite/stories/{{usersPage.id}}">Your Favorite Stories</a></li>
+            {%endif%}
+            {% if usersPage.id != user.id %}
+            <li><a href="/favorite/stories/{{usersPage.id}}">{{usersPage.username}}'s Fav Stories</a></li>
+            {%endif%}
         </ul>
     </header>
         <section class="dashboard">
@@ -90,7 +95,8 @@
             {%for story in stories reversed%}
             <div class="story">
                 <div class="story-blocks">
-                    <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
+                    <a href="/story/{{story.id}}"><h1>Title: {{story.title}}</h1></a>
+                    <h2>Genre: {{story.genre}}</h2>
                     {% if usersPage.id == user.id %}
                     <form action="/story/delete/{{story.id}}" method="POST">
                         {%csrf_token%}

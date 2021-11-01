@@ -75,8 +75,7 @@ h1{
 h2{
     font-family: 'Architects Daughter', cursive;
 }
-.dashboard{
-    /* background-color: #b8ae92;     */
+.dashboard{ 
     background-color: #f3f2ef;
     width: 100%;  
     min-height: 100vh;
@@ -234,8 +233,8 @@ textarea{
 }
 .create-story{
     display: flex;
-    justify-content: center;
-
+    justify-content: center; 
+    flex-wrap: wrap;
 }
 .create-story-form{
     /* border: linear-gradient(to right, rgb(202,141,141), rgb(152, 207, 207),rgb(202,141,141), rgb(139, 172, 120)); */
@@ -246,7 +245,7 @@ textarea{
     /* background: rgb(131,58,180);
     background: linear-gradient(30deg, rgba(131,58,180,0.3085609243697479) 0%, rgba(159,65,65,0.6446953781512605) 50%, rgba(69,122,252,0.227328431372549) 100%); */
     box-shadow: 0 1rem 2rem rgba(8, 10, 9, 0.287);
-    margin: 40px;
+    margin: 50px;
     padding: 50px;
 }
 
@@ -273,11 +272,11 @@ textarea{
 
 .profile-pic{
     margin-top: 20px;
-    
 }
 
 .comments{
     border: 2px solid black;
+    border-radius: 20px;
     margin: 20px;
     display: flex;
     justify-content: center;
@@ -289,4 +288,14 @@ textarea{
     margin: 20px;
     display: flex;
     justify-content: center;
+}
+.stories{
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 50%;
+    background-color: #f3f2ef;
+    box-shadow: 0 1rem 2rem rgba(10, 9, 9, 0.287);
+}
+.genre{
+    font-family: 'Architects Daughter', cursive;
 }

@@ -4,9 +4,12 @@ def removeNegatives(arr):
     arr[:] = [item for item in arr if item >= 0]
     return arr
     # return arr[::-1]
-print(removeNegatives([-2,-4,0,22,993,-8]))
+sumArr = [-2,-4,0,22,993,-8]
+print(removeNegatives(sumArr))
+print(sumArr)
 
 # Return the second-to-last element of an array. Given [42,true,4,"Kate",7], return "Kate". If array is too short, return null.
+
 
 def returnSecondToLastElement(arr):
     if (len(arr) <= 2):
@@ -44,6 +47,32 @@ print(secondLargest([34]))
 print(secondLargest([]))
 
 # Return the element that is N-from-array’s-end. Given ([5,2,3,6,4,9,7],3), return 4. If the array is too short, return null.
+# I need to return the nth element from the arrays end so first I should traverse through the array backwords N amount of times
 
+def nthToLast(arr, n):
+    if (len(arr) <= 2):
+        return arr
+    i = len(arr)-1
+    while n > 0:
+        n-=1
+        if (n != 0):
+            i-=1
+    return arr[i]
+print(nthToLast([5,2,3,6,4,9,7], 2))
+print(nthToLast([5,2,3,6,4,9,7,-33,2134,.003], 0))
+print(nthToLast([5,2], 2))
+
+# Given array, and indices start and end, remove vals in that index range, working in-place (hence shortening the array). Given ([20,30,40,50,60,70],2,4), change to [20,30,70] and return it.
+
+
+# givin a string return the length of the last word 
+def lengthOfLastWord(str):
+    newStr = str .split()
+    lastWord = newStr[-1]
+    print(len(lastWord))
+    return newStr
+print(lengthOfLastWord("Hello World"))
+print(lengthOfLastWord("fly me  to   the moon"))
+print(lengthOfLastWord("luffy is still joyboy"))
 
 

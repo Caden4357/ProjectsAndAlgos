@@ -25,7 +25,7 @@
         <ul>
             <li><a href="/dashboard">Home</a></li>
             <li><a href="/logout">Logout</a></li>
-            <li><a href="/favorite/stories/{{usersPage.id}}">Favorite Stories</a></li>
+            <li><a href="#">Favorite Stories</a></li>
         </ul>
     </header>
     <div class="dashboard">
@@ -39,8 +39,10 @@
         </div>
         {%for story in user.liked_stories.all%}
         <div class="fav-stories">
-            <div>
+            <div class="stories">
                 <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
+                <h2 class="text-center">Written By:{{story.writer_of_the_story.username}}</h2>
+                <h3 class="genre text-center">Genre: {{story.genre}}</h3>
             </div>
         </div>
         {%endfor%}
