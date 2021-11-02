@@ -89,7 +89,6 @@ def removeRange(arr, start, end):
 print(removeRange([20,30,40,50,60,70],2,4))
 
 
-
 # givin a string return the length of the last word 
 def lengthOfLastWord(str):
     newStr = str .split()
