@@ -1,4 +1,5 @@
 import math
+import random
 # Implement removeNegatives() that accepts an array, removes negative values, and returns the same array (not a copy), preserving non-negatives’ order
 def removeNegatives(arr):
     arr[:] = [item for item in arr if item >= 0]
@@ -62,7 +63,31 @@ print(nthToLast([5,2,3,6,4,9,7], 2))
 print(nthToLast([5,2,3,6,4,9,7,-33,2134,.003], 0))
 print(nthToLast([5,2], 2))
 
+# In JavaScript, the Array object has numerous useful methods. It does not, however, contain a method that will randomize the order of an array’s elements. Let’s create shuffle(arr), to efficiently shuffle a given array’s values. Work in-place, naturally. Do you need to return anything from your function?
+def shuffleList(arr):
+    print ("The original list is: " + str(arr))
+    for i in range(len(arr)-1, 0, -1):
+        j = random.randint(0, i + 1)
+        arr[i], arr[j] = arr[j], arr[i]
+    print("The new shuffled list is: " + str(arr))
+shuffleList([1,4,5,6,3])
+shuffleList([1,4,5,6,3,77,566,3245234,-22,4,2,11,.09])
+
+# shuffle list using built in shuffle method 
+def shuffleList2(arr):
+    random.shuffle(arr)
+    print(arr)
+shuffleList2([1,4,5,6,3])
+shuffleList2([1,4,5,6,3,77,566,3245234,-22,4,2,11,.09])
+
 # Given array, and indices start and end, remove vals in that index range, working in-place (hence shortening the array). Given ([20,30,40,50,60,70],2,4), change to [20,30,70] and return it.
+def removeRange(arr, start, end):
+    # arr = arr[2:4:1]
+    # return arr
+    del arr[start:end+1]
+    return arr
+print(removeRange([20,30,40,50,60,70],2,4))
+
 
 
 # givin a string return the length of the last word 
