@@ -88,6 +88,9 @@ def removeRange(arr, start, end):
     return arr
 print(removeRange([20,30,40,50,60,70],2,4))
 
+# Create a function that changes a given array to list each original element twice, retaining original order. Convert [4,"Ulysses",42,false] to [4,4,"Ulysses","Ulysses",42,42,false,false].
+
+
 
 # givin a string return the length of the last word 
 def lengthOfLastWord(str):
