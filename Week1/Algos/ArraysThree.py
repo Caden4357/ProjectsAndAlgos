@@ -26,7 +26,6 @@ print(returnSecondToLastElement([]))
 
 # Return the second-largest element of an array. Given [42,1,4,Math.PI,7], return 7. If the array is too short, return null.
 # first I can keep track of the largest number by naming arr[0] the largest and iterating through the whole array once that part of the problem is done (I have the largest number) I can work backwards with a while loop to navigate through the array starting at i which will be the last index of the array then compare to see if the current num is larger than secondNum which is automatically just arr[0] and at the same time smaller than the max num to avoid making max num and secondNum the same number 
-
 def secondLargest(arr):
     if (len(arr) <= 1):
         return None
