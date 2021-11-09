@@ -6,9 +6,14 @@
 - Font weights 
 Default: 400
 
+-Letter Spacing
+-0.5px
+0.75px
+
 - Line heights
-Defaul: 1
-Small 24511.05
+Default: 1
+Small: 1.05
+Medium: 1.2
 Paragraph default 1.6
 
 -Spacing system (px)
@@ -64,14 +69,30 @@ body{
 .grid--3-cols{
     grid-template-columns: repeat(3, 1fr);
 }
-
-.heading-primary{
-    font-size: 5.2rem;
+.heading-primary, 
+.heading-secondary{
     font-weight: 600;
-    line-height: 1.05;
     color: #333;
     letter-spacing: -0.5px;
+}
+.heading-primary{
+    font-size: 5.2rem;
+    line-height: 1.05;
     margin-bottom: 3.2rem;
+}
+.heading-secondary{
+    font-size: 4.4rem;
+    line-height: 1.2;
+    margin-bottom: 9.6rem;
+}
+.subheading{
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #cf711f;
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.75px;
 }
 .btn:link, .btn:visited{
     display: inline-block;
@@ -219,5 +240,7 @@ body{
 
 .section-how{
     padding: 9.6rem 0;
-    background-color: royalblue;
+}
+.step-img{
+    width: 50%;
 }
