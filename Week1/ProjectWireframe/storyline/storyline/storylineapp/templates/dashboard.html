@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
-<script src="{% static 'js/java.js' %}"></script>
 {%load thumbnail%}
     <title>Welcome</title>
 </head>
@@ -68,6 +67,75 @@
                 </div>
             </div>
             <hr>
+            <h1>Filter stories</h1>
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="/filter/stories/action">Action</a>
+                    <a href="/filter/stories/comedy">Comedy</a>
+                    <a href="/filter/stories/sci-fi">Sci-fi/Fantasy</a>
+                    <a href="/filter/stories/mystery">Mystery/Thriller</a>
+                    <a href="/filter/stories/horror">Horror</a>
+                    <a href="/filter/stories/drama">Drama</a>
+                    <a href="/filter/stories/romance">Romance</a>
+                </div>
+            </div>
+            {%for story in action_stories%}
+            <div class="story">
+                <div class="story-blocks">
+                    <p>{{story.title}}</p>
+                    <p>{{story.genre}}</p>
+                </div>
+            </div>
+            {%endfor%}
+            {%for story in comedy_stories%}
+            <div class="story">
+                <div class="story-blocks">
+                    <p>{{story.title}}</p>
+                    <p>{{story.genre}}</p>
+                </div>
+            </div>
+            {%endfor%}
+            {%for story in scifi_stories%}
+            <div class="story">
+                <div class="story-blocks">
+                    <p>{{story.title}}</p>
+                    <p>{{story.genre}}</p>
+                </div>
+            </div>
+            {%endfor%}
+            {%for story in mystery_stories%}
+            <div class="story">
+                <div class="story-blocks">
+                    <p>{{story.title}}</p>
+                    <p>{{story.genre}}</p>
+                </div>
+            </div>
+            {%endfor%}
+            {%for story in horror_stories%}
+            <div class="story">
+                <div class="story-blocks">
+                    <p>{{story.title}}</p>
+                    <p>{{story.genre}}</p>
+                </div>
+            </div>
+            {%endfor%}
+            {%for story in drama_stories%}
+            <div class="story">
+                <div class="story-blocks">
+                    <p>{{story.title}}</p>
+                    <p>{{story.genre}}</p>
+                </div>
+            </div>
+            {%endfor%}
+            {%for story in romance_stories%}
+            <div class="story">
+                <div class="story-blocks">
+                    <p>{{story.title}}</p>
+                    <p>{{story.genre}}</p>
+                </div>
+            </div>
+            {%endfor%}
             <h1 class="story-header">New Stories</h1>
             {%for story in stories reversed%}
             <div class="story">
@@ -81,5 +149,6 @@
             <hr>
             {%endfor%}
         </section>
+        <script src="{% static 'js/java.js' %}"></script>
 </body>
 </html>

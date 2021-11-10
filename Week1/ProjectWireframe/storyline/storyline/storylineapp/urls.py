@@ -33,4 +33,12 @@ urlpatterns = [
     path('unfavorite/<int:id>', views.unfavorite_story),
     path('favorite/stories/<int:id>', views.users_favorite_stories),
 
+    # filter stories
+    path('filter/stories/action', views.filter_stories_action),
+    path('filter/stories/comedy', views.filter_stories_comedy),
+    path('filter/stories/sci-fi', views.filter_stories_scifi),
+    path('filter/stories/mystery', views.filter_stories_mystery),
+    path('filter/stories/horror', views.filter_stories_horror),
+    path('filter/stories/drama', views.filter_stories_drama),
+    path('filter/stories/romance', views.filter_stories_romance)
 ]
