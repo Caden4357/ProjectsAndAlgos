@@ -34,5 +34,5 @@ urlpatterns = [
     path('favorite/stories/<int:id>', views.users_favorite_stories),
 
     # filter stories
-    path('filter/stories/<genre>', views.filter_stories)
+    path('filter/stories/<genre>', views.filter_stories),
 ]

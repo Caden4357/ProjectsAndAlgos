@@ -155,7 +155,7 @@ class StoryManager(models.Manager):
 class Story(models.Model):
     ACTION = 'action'
     COMEDY = 'comedy'
-    SCIFI = 'sci-fi/fantasy'
+    SCIFI = 'sci-fi-fantasy'
     THRILLER = "thriller"
     HORROR = 'horror'
     DRAMA = 'drama'
@@ -163,8 +163,8 @@ class Story(models.Model):
     CHOICES = (
         (ACTION, 'action'),
         (COMEDY, 'comedy'),
-        (SCIFI, "sci-fi/fantasy"),
-        (THRILLER, 'mystery/thriller'),
+        (SCIFI, "sci-fi-fantasy"),
+        (THRILLER, 'mystery-thriller'),
         (HORROR, "horror"),
         (DRAMA, 'drama'),
         (ROMANCE, 'romance')
