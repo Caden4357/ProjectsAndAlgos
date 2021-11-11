@@ -35,4 +35,5 @@ urlpatterns = [
 
     # filter stories
     path('filter/stories/<genre>', views.filter_stories),
+    path('filter/stories/<genre>/<genre_two>', views.filter_stories_two),
 ]
