@@ -73,74 +73,14 @@
                 <div id="myDropdown" class="dropdown-content">
                     <a href="/filter/stories/action">Action</a>
                     <a href="/filter/stories/comedy">Comedy</a>
-                    <a href="/filter/stories/sci-fi">Sci-fi/Fantasy</a>
-                    <a href="/filter/stories/mystery">Mystery/Thriller</a>
+                    <a href="/filter/stories/sci-fi/fantasy">Sci-fi/Fantasy</a>
+                    <a href="/filter/stories/mystery/thriller">Mystery/Thriller</a>
                     <a href="/filter/stories/horror">Horror</a>
                     <a href="/filter/stories/drama">Drama</a>
                     <a href="/filter/stories/romance">Romance</a>
                 </div>
             </div>
-            {%for story in action_stories%}
-            <div class="story">
-                <div class="story-blocks">
-                    <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
-                    <p class="smaller">Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
-                    <p class="smaller">Posted: {{story.created_at}}</p>
-                    <p class="smaller">Genre: {{story.genre}}</p>
-                </div>
-            </div>
-            {%endfor%}
-            {%for story in comedy_stories%}
-            <div class="story">
-                <div class="story-blocks">
-                    <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
-                    <p class="smaller">Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
-                    <p class="smaller">Posted: {{story.created_at}}</p>
-                    <p class="smaller">Genre: {{story.genre}}</p>
-                </div>
-            </div>
-            {%endfor%}
-            {%for story in scifi_stories%}
-            <div class="story">
-                <div class="story-blocks">
-                    <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
-                    <p class="smaller">Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
-                    <p class="smaller">Posted: {{story.created_at}}</p>
-                    <p class="smaller">Genre: {{story.genre}}</p>
-                </div>
-            </div>
-            {%endfor%}
-            {%for story in mystery_stories%}
-            <div class="story">
-                <div class="story-blocks">
-                    <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
-                    <p class="smaller">Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
-                    <p class="smaller">Posted: {{story.created_at}}</p>
-                    <p class="smaller">Genre: {{story.genre}}</p>
-                </div>
-            </div>
-            {%endfor%}
-            {%for story in horror_stories%}
-            <div class="story">
-                <div class="story-blocks">
-                    <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
-                    <p class="smaller">Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
-                    <p class="smaller">Posted: {{story.created_at}}</p>
-                    <p class="smaller">Genre: {{story.genre}}</p>
-                </div>
-            </div>
-            {%endfor%}
-            {%for story in drama_stories%}
-            <div class="story">
-                <div class="story-blocks">
-                    <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>
-                    <p class="smaller">Written By: <a href="/profile/{{story.writer_of_the_story.id}}">{{story.writer_of_the_story.username}}</a></p>
-                    <p class="smaller">Posted: {{story.created_at}}</p>
-                    <p class="smaller">Genre: {{story.genre}}</p>
-                </div>
-            </div>
-            {%endfor%}
-            {%for story in romance_stories%}
+            {%for story in filtered_stories%}
             <div class="story">
                 <div class="story-blocks">
                     <a href="/story/{{story.id}}"><h1>{{story.title}}</h1></a>

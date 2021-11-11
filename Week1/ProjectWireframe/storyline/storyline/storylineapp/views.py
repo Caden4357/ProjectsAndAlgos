@@ -227,69 +227,15 @@ def users_favorite_stories(request, id):
     }
     return render(request, 'favorite_stories.html', context)
 
-def filter_stories_action(request):
+def filter_stories(request, genre):
     if 'user_id' not in request.session:
         messages.error(request, "You need to log in")
         return redirect('/')
     context={
-        "action_stories": Story.objects.filter(genre="action")
-    }
-    return render(request, "dashboard.html", context)
-    
-def filter_stories_comedy(request):
-    if 'user_id' not in request.session:
-        messages.error(request, "You need to log in")
-        return redirect('/')
-    context={
-        "comedy_stories": Story.objects.filter(genre="comedy")
+        "filtered_stories": Story.objects.filter(genre=genre)
     }
     return render(request, "dashboard.html", context)
 
-def filter_stories_scifi(request):
-    if 'user_id' not in request.session:
-        messages.error(request, "You need to log in")
-        return redirect('/')
-    context={
-        "sci-fi_stories": Story.objects.filter(genre="sci-fi/fantasy")
-    }
-    return render(request, "dashboard.html", context)
-
-def filter_stories_mystery(request):
-    if 'user_id' not in request.session:
-        messages.error(request, "You need to log in")
-        return redirect('/')
-    context={
-        "mystery_stories": Story.objects.filter(genre="mystery/thriller")
-    }
-    return render(request, "dashboard.html", context)
-
-def filter_stories_horror(request):
-    if 'user_id' not in request.session:
-        messages.error(request, "You need to log in")
-        return redirect('/')
-    context={
-        "horror_stories": Story.objects.filter(genre="horror")
-    }
-    return render(request, "dashboard.html", context)
-
-
-def filter_stories_drama(request):
-    if 'user_id' not in request.session:
-        messages.error(request, "You need to log in")
-        return redirect('/')
-    context={
-        "drama_stories": Story.objects.filter(genre="drama")
-    }
-    return render(request, "dashboard.html", context)
-
-def filter_stories_romance(request):
-    if 'user_id' not in request.session:
-        messages.error(request, "You need to log in")
-        return redirect('/')
-    context={
-        "romance_stories": Story.objects.filter(genre="romance")
-    }
-    return render(request, "dashboard.html", context)
 
 
 
