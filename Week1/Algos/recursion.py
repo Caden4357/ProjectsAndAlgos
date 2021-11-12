@@ -49,5 +49,33 @@ def fibs(n):
 fibs(10)
 
 def fib(num):
-    
+    if num < 2:
+        return num
+    return fib(num-1) + fib(num-2)
+print(fib(0))
+print(fib(1))
+print(fib(2))
+print(fib(3))
+print(fib(4))
+print(fib(5))
+print(fib(6))
+print(fib(7))
 
+def fibIter(num):
+    if num < 2:
+        return num
+    num1 = 0
+    num2 = 1
+    for i in range(2, num, 1):
+        temp = num1 + num2
+        num1 = num2
+        num2 = temp
+    return num1+num2
+print(fibIter(0))
+print(fibIter(1))
+print(fibIter(2))
+print(fibIter(3))
+print(fibIter(4))
+print(fibIter(5))
+print(fibIter(6))
+print(fibIter(7))
