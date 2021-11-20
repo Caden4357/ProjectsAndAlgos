@@ -306,6 +306,10 @@ textarea{
 .genre{
     font-family: 'Architects Daughter', cursive;
 }
+.post{
+    margin-top: 30px;
+    font-size: 2.6rem
+}
 
 
 /* experimenting with dropdown menu thats gonna filter stories by genre  */

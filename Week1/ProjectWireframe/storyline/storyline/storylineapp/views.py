@@ -231,8 +231,10 @@ def filter_stories(request, genre):
     if 'user_id' not in request.session:
         messages.error(request, "You need to log in")
         return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
     context={
-        "filtered_stories": Story.objects.filter(genre=genre)
+        "filtered_stories": Story.objects.filter(genre=genre),
+        "user": user
     }
     return render(request, "dashboard.html", context)
 
@@ -240,8 +242,10 @@ def filter_stories_two(request, genre, genre_two):
     if 'user_id' not in request.session:
         messages.error(request, "You need to log in")
         return redirect('/')
+    user = User.objects.get(id=request.session['user_id'])
     context={
-        "filtered_stories": Story.objects.filter(genre=genre+ "/" +genre_two)
+        "filtered_stories": Story.objects.filter(genre=genre+ "/" +genre_two),
+        "user": user
     }
     return render(request, "dashboard.html", context)
 
