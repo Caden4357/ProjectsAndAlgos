@@ -20,7 +20,8 @@ print(reverseWithoutBuiltIns([5,4,3,2,1,0,9,-88,22,-0.4]))
 
 
 
-
+print(not (1 <= 2 and 2 >= 3))
+print(not 1 <= 2 and 2 >= 3 )
 
 
 
@@ -32,7 +33,7 @@ print(reverseWithoutBuiltIns([5,4,3,2,1,0,9,-88,22,-0.4]))
 # Alan is good at breaking secret codes. One method is to eliminate values that lie outside of a specific known range. Given arr and values min and max, retain only the array values between min and max. Work in-place: return the array you are given, with values in original order. No built-in array functions.
 
 def filterRange(arr, min, max):
-    for i in range(len(arr)-1):
+    for i in range(len(arr)):
         if(arr[i] < min):
             arr.pop(i)
         elif(arr[i] > max):

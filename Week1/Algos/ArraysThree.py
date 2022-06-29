@@ -5,7 +5,7 @@ def removeNegatives(arr):
     arr[:] = [item for item in arr if item >= 0]
     return arr
     # return arr[::-1]
-sumArr = [-2,-4,0,22,993,-8]
+sumArr = [-2,-4,0,22,993,-8,8]
 print(removeNegatives(sumArr))
 print(sumArr)
 

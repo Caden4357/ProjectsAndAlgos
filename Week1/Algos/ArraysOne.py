@@ -28,7 +28,7 @@ print(pushToFront2([200,18,15,4,3,2,1], 6))
 
 # Given an array, remove and return the value at the beginning of the array. Do this without using any built-in array methods except pop().
 def popFront(arr):
-    removedItem = arr.pop(0)
+    removedItem = arr.pop(4)
     return removedItem
 print(popFront([1,2,3,5,4]))
 
@@ -45,7 +45,7 @@ def insertAt(arr, idx, val):
     else:
         arr = arr + [0]
         i = 0
-        while i < len(arr):
+        while i < len(arr)-1:
             try:
                 if(i == idx):
                     temp1 = arr[i]

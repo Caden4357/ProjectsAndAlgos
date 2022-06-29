@@ -46,6 +46,6 @@ list.listprint()
 print("third list")
 list.remove_head()
 list.listprint()
-print(list2.return_head())
-print(list.return_head())
+# print(list2.return_head())
+# print(list.return_head())
 

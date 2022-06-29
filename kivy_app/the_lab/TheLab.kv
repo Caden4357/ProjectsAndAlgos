@@ -1,0 +1,41 @@
+# this is the class that your affecting 
+BoxLayoutExample:
+
+
+# doing what we did in main.py just in here instead 
+<BoxLayoutExample>:
+    orientation: "horizontal"
+    #orientation: "vertical"
+    Button:
+        text: "A"
+        #width is the first number height is the second num instead of using size we can use this alternatively put none none and then use size but #size wont be responsive you can mix them so height would be static and width would be responsive 
+        size_hint: .5, .5
+        #pos_hint is the position also responsive it is a dictionary it goes, 
+        # x, center_x, right and y, center_y, top
+        #use x, center_x, right for vertical and y, center_y, top for horizontal
+
+        #pos_hint: {"center_x": .5}
+        pos_hint: {"y": 0}
+    Button:
+        text: "B"
+        #size_hint: 1, 2
+    Label:
+        text: "C"
+
+
+<MainWidget>:
+    Button:
+        text: "Hello"
+        # size of the button in pixels
+        # size: 400, 200
+        # size of the button in dp to make it more responsive 
+        size: "100dp", "80dp"
+        #position of the button or element
+        pos: "100dp", "200dp"
+        background_color: (1, 0, 1, 1)
+    Label:
+        text:"Hello Label" 
+        size: '400dp', '400dp'
+        pos: "200dp", "300dp"
+        color: 1, 0, 0, 1
+

@@ -1,5 +1,5 @@
 # Given an array of comparable values, move the lowest element to array’s front, shifting backward any elements previously ahead of it. Do not otherwise change the array’s order. Given [4,2,1,3,5], change it to [1,4,2,3,5] and return it. As always, do this without using built-in functions.
-
+import random
 #1.) return null for invalid inputs 
 # 2.) find the smallest element and the index of the smallest element 
 # 3.) shift backwards any elements previous to smallest element 
@@ -13,11 +13,18 @@ def minToFront(arr):
         if arr[i] < min:
             min = arr[i]
             index = i
-    while index >= 0:
+    while index > 0:
         arr[index] = arr[index-1]
         index -=1
+        print(arr)
     arr[0] = min
     return arr
 print(minToFront([1,2,-3,-4,7,6,11]))
 print(minToFront([1]))
 print(minToFront([]))
+
+
+
+# import string_utils
+
+# print(string_utils.shuffle("random_string"))
